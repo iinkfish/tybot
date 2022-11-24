@@ -9,8 +9,8 @@ import os
 from discord.utils import get
 import logging
 
-
-f = open('botConfig.json')
+print (os.getcwd())
+f = open('./src/botConfig.json')
 # f = open('..\\data\\credentials.json')
 config = json.load(f)
 
