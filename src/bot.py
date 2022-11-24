@@ -10,7 +10,11 @@ from discord.utils import get
 import logging
 
 print (os.getcwd())
-f = open('./src/botConfig.json')
+
+try:
+    f = open('./src/botConfig.json')
+except FileNotFoundError:
+    print("There was an error opening the file. Please check path")
 # f = open('..\\data\\credentials.json')
 config = json.load(f)
 
@@ -58,7 +62,11 @@ def run_discord_bot():
     @bot.command(aliases=['8ball', '8bal'])
     async def eightball(ctx, *, question):
         # responses = ['All signs point to yes...', 'Yes!', 'My sources say nope.', 'You may rely on it.', 'Concentrate and ask again...', 'Outlook not so good...', 'It is decidedly so!', 'Better not tell you.', 'Very doubtful.', 'Yes - Definitely!', 'It is certain!', 'Most likely.', 'Ask again later.', 'No!', 'Outlook good.', 'Don\'t count on it.']
-        f = open('botData.json')
+        try:
+            f = open('./data/botData.json')
+        except FileNotFoundError:
+            print("The response file was not found! Please check path or input the absolute path to botdata.json")
+            logging.error('The response file was not found! Please check path or input the absolute path to botdata.json')
         data = json.load(f)
         responses = data["responses"]
         print(f"{ctx.author} used 8ball")
