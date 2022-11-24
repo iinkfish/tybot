@@ -1,6 +1,6 @@
 {
     "botMeta": {
-        "TOKEN": "your token here",
+        "TOKEN": "your token here without paren",
         "botName": "YOUR BOT NAME HERE",
         "loggingLevel": "info",
         "botDataPath": "ABSOLUTE PATH TO YOUR BOTDATA"
