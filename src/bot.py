@@ -10,7 +10,7 @@ from discord.utils import get
 import logging
 
 
-f = open('config.json')
+f = open('botConfig.json')
 # f = open('..\\data\\credentials.json')
 config = json.load(f)
 
