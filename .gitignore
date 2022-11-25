@@ -5,3 +5,4 @@ data/botConfig.json
 src/__pycache__/bot.cpython-311.pyc
 src/__pycache__/classdefs.cpython-311.pyc
 app.log
+src/__pycache__/funcs.cpython-311.pyc
