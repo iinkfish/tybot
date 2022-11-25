@@ -8,23 +8,24 @@ from classdefs import tree
 import os
 from discord.utils import get
 import logging
+import funcs
 
 print (os.getcwd())
 
-try:
-    f = open('./src/botConfig.json')
-except FileNotFoundError:
-    print("There was an error opening the file. Please check path")
-# f = open('..\\data\\credentials.json')
-config = json.load(f)
+# try:
+#     f = open('./src/botConfig.json')
+# except FileNotFoundError:
+#     print("There was an error opening the file. Please check path in bot.py")
+# # f = open('..\\data\\credentials.json')
+# config = json.load(f)
 
-logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logging.warning('This will get logged to a file')
+# logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+# logging.warning('This will get logged to a file')
 
 
-TOKEN = config["botMeta"]["TOKEN"]
+# TOKEN = config["botMeta"]["TOKEN"]
 
-def run_discord_bot():
+def run_discord_bot(token):
 
     bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -81,9 +82,22 @@ def run_discord_bot():
             if member == None:
                 member = ctx.author
             name = member.display_name
-            await ctx.send(f"Wow {member.mention} is so cute")
+            await ctx.send(f"Can we please talk about what a cutiepie {member.mention} is? Can yall believe how cute they are?")
             await ctx.message.delete()
             logging.info('%s used cute command and message was deleted', ctx.author)
+        except Exception as e:
+            print(e)
+            logging.error('%s', e)
+
+    @bot.command()
+    async def hug(ctx, member:discord.Member = None):
+        try:
+            if member == None:
+                member = ctx.author
+            currCount = funcs.incrementInJSON("./data/botData.json", str(ctx.message.guild.id), "hugCount")
+            await ctx.send(f" {ctx.author} gives {member.mention} a fat hug <3. {currCount} hugs were given out in this server")
+            # print(ctx.message.guild.id)
+            logging.info('%s used hug command', ctx.author)
         except Exception as e:
             print(e)
             logging.error('%s', e)
@@ -118,4 +132,4 @@ def run_discord_bot():
 
     #     await ctx.send(embed=embed)
 
-    bot.run(TOKEN)
+    bot.run(token)
