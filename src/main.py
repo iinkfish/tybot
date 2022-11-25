@@ -5,7 +5,7 @@ import json
 if __name__ == '__main__':
 
     try:
-        f = open('./src/botConfig.json')
+        f = open('./data/botConfig.json')
     except FileNotFoundError:
         print("There was an error opening the file. Please check path in bot.py")
     # f = open('..\\data\\credentials.json')
