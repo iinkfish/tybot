@@ -3,6 +3,9 @@
         "TOKEN": "PUT YOUR KEY HERE",
         "botName": "YOUR BOT NAME HERE",
         "loggingLevel": "info",
-        "botDataPath": "ABSOLUTE PATH TO YOUR BOTDATA"
+        "botDataPath": "ABSOLUTE PATH TO YOUR BOTDATA",
+        "TWITCH_CLIENT_ID": "YOUR CLIENT ID",
+        "TWITCH_CLIENT_SECRET": "YOUR SECRET",
+        "TWITCH_CLIENT_TOKEN": "YOUR TOKEN"
     }
 }

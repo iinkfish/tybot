@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.ext.tasks import loop
 from discord import app_commands
 import classdefs
 import random
@@ -9,6 +10,7 @@ import os
 from discord.utils import get
 import logging
 import funcs
+import twitch
 
 print (os.getcwd())
 
@@ -41,6 +43,17 @@ def run_discord_bot(token):
         except Exception as e:
             print(e)
             logging.error('%s', e)
+
+    @loop(seconds=90)
+    # @bot.command(aliases = ['check', 'online'])
+    async def check_twitch_online_streamers():
+        channel = bot.get_channel(1045022643075690526)
+        if not channel: 
+            return
+        print("command has been called")
+        notifications = twitch.get_notifications()
+        for notification in notifications:
+            await channel.send("streamer {} is now online: {}".format(notification["user_login"], notification))
 
     @bot.event
     async def on_member_join(member):
