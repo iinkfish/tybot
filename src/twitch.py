@@ -79,6 +79,6 @@ def get_notifications():
     return notifications
 
 
-notification = get_notifications()
+# notification = get_notifications()
 
-print(notification)
+# print(notification)

@@ -44,9 +44,9 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
-    @loop(seconds=90)
-    # @bot.command(aliases = ['check', 'online'])
-    async def check_twitch_online_streamers():
+    # @loop(seconds=90)
+    @bot.command(aliases = ['check', 'online'])
+    async def check_twitch_online_streamers(ctx):
         channel = bot.get_channel(1045022643075690526)
         if not channel: 
             return
