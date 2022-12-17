@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ext.tasks import loop
+from discord.ext import tasks
 from discord import app_commands
 import classdefs
 import random
@@ -11,7 +11,7 @@ from discord.utils import get
 import logging
 import funcs
 import twitch
-
+import requests
 print (os.getcwd())
 
 # try:
@@ -44,16 +44,19 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
-    # @loop(seconds=90)
-    @bot.command(aliases = ['check', 'online'])
-    async def check_twitch_online_streamers(ctx):
-        channel = bot.get_channel(1045022643075690526)
-        if not channel: 
-            return
-        print("command has been called")
-        notifications = twitch.get_notifications()
-        for notification in notifications:
-            await channel.send("streamer {} is now online: {}".format(notification["user_login"], notification))
+    # @tasks.loop(seconds=90)
+    # async def check_twitch_online_streamers():
+    #     channel = bot.get_channel(1045022643075690526)
+    #     print("command call")
+    #     if not channel: 
+    #         return
+    #     # print("command has been called")
+    #     notifications = twitch.get_notifications()
+    #     for notification in notifications:
+    #         await channel.send("streamer {} is now online: {}".format(notification["user_login"], notification))
+
+    # check_twitch_online_streamers.start()
+
 
     @bot.event
     async def on_member_join(member):
@@ -125,6 +128,14 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
+    @bot.command()
+    async def map(ctx):
+        try:
+            response = requests.get(f'https://api.mozambiquehe.re/maprotation?auth=b5aeb39166fc6db8a895bfd34942d6e3&version=1')
+            data = response.json()
+            await ctx.send(f'Current Map: {data["battle_royale"]["current"]["map"]} for {data["battle_royale"]["current"]["remainingTimer"]} \nNext map: {data["battle_royale"]["next"]["map"]} for {data["battle_royale"]["next"]["DurationInMinutes"]} minutes ')
+        except Exception as e:
+            print(e)
     # @bot.command()
     # async def embed(ctx, member:discord.Member = None):
     #     if member == None:
