@@ -112,6 +112,15 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
+    @bot.command()
+    async def map(ctx):
+        try:
+            response = requests.get(f'https://api.mozambiquehe.re/maprotation?auth=b5aeb39166fc6db8a895bfd34942d6e3&version=1')
+            data = response.json()
+            await ctx.send(f'Current Map: {data["battle_royale"]["current"]["map"]} for {data["battle_royale"]["current"]["remainingTimer"]} \nNext map: {data["battle_royale"]["next"]["map"]} for {data["battle_royale"]["next"]["DurationInMinutes"]} minutes ')
+        except Exception as e:
+            print(e)
+
     # @bot.command()
     # async def embed(ctx, member:discord.Member = None):
     #     if member == None:
