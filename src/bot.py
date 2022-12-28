@@ -9,6 +9,7 @@ import os
 from discord.utils import get
 import logging
 import funcs
+import requests 
 
 print (os.getcwd())
 
