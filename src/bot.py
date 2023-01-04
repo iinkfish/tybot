@@ -91,6 +91,7 @@ def run_discord_bot(token):
             logging.error('%s', e)
 
     @bot.command(aliases = ['luv', 'Love'])
+    @commands.cooldown(1, 300, commands.BucketType.user)
     async def love(ctx, member:discord.Member = None):
         try:
             if member == None:
