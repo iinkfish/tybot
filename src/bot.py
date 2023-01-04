@@ -90,6 +90,18 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
+    @bot.command(aliases = ['luv', 'Love'])
+    async def love(ctx, member:discord.Member = None):
+        try:
+            if member == None:
+                member = ctx.author
+            name = member.display_name
+            await ctx.send(f"There is a {random.randint(1, 100)} % chance of love between {ctx.author.mention} and {member.mention} <3")
+            logging.info('%s used love command with target %s', ctx.author, name)
+        except Exception as e:
+            print(e)
+            logging.error('%s', e)
+
     @bot.command()
     async def hug(ctx, member:discord.Member = None):
         try:
