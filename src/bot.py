@@ -109,7 +109,7 @@ def run_discord_bot(token):
             if member == None:
                 member = ctx.author
             currCount = funcs.incrementInJSON("./data/botData.json", str(ctx.message.guild.id), "hugCount")
-            await ctx.send(f" {ctx.author} gives {member.mention.mention} a fat hug <3. {currCount} hugs were given out in this server")
+            await ctx.send(f" {ctx.author} gives {member.mention} a fat hug <3. {currCount} hugs were given out in this server")
             # print(ctx.message.guild.id)
             logging.info('%s used hug command', ctx.author)
         except Exception as e:
