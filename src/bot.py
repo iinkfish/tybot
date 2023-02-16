@@ -9,7 +9,7 @@ import os
 from discord.utils import get
 import logging
 import funcs
-import requests 
+import requests
 
 print (os.getcwd())
 
@@ -34,7 +34,7 @@ def run_discord_bot(token):
     async def self(interation: discord.Interaction):
         await interation.response.send_message(f"Pong")
 
-    @bot.event 
+    @bot.event
     async def on_ready():
         try:
             print("Bot is online")
@@ -52,7 +52,7 @@ def run_discord_bot(token):
             print(e)
             logging.error('%s', e)
 
-    @bot.event 
+    @bot.event
     async def on_member_remove(member):
         try:
             channel = member.guild.system_channel
@@ -131,14 +131,14 @@ def run_discord_bot(token):
         try:
             response = requests.get(f'https://api.mozambiquehe.re/maprotation?auth=b5aeb39166fc6db8a895bfd34942d6e3&version=1')
             data = response.json()
-            await ctx.send(f'Current Map: {data["battle_royale"]["current"]["map"]} for {data["battle_royale"]["current"]["remainingTimer"]} \nNext map: {data["battle_royale"]["next"]["map"]} for {data["battle_royale"]["next"]["DurationInMinutes"]} minutes ')
+            await ctx.send(f'Current pub map: **{data["battle_royale"]["current"]["map"]}** for **{data["battle_royale"]["current"]["remainingTimer"]}** \nNext map: **{data["battle_royale"]["next"]["map"]}** for **{data["battle_royale"]["next"]["DurationInMinutes"]}** minutes \n \nCurrent ranked map: **{data["ranked"]["current"]["map"]}** for **{data["ranked"]["current"]["remainingTimer"]}** \nNext map: **{data["ranked"]["next"]["map"]}** for **{data["ranked"]["next"]["DurationInMinutes"]}** minutes \n \nLTM: **{data["ltm"]["current"]["eventName"]}** on **{data["ltm"]["current"]["map"]}** for **{data["ltm"]["current"]["remainingTimer"]}** \nNext up: **{data["ltm"]["next"]["eventName"]}** on **{data["ltm"]["next"]["map"]}** for **{data["ltm"]["next"]["DurationInMinutes"]}** minutes ')
         except Exception as e:
             print(e)
 
     # @bot.command()
     # async def embed(ctx, member:discord.Member = None):
     #     if member == None:
-    #         member = ctx.author 
+    #         member = ctx.author
 
     #     name = member.display_name
     #     pfp = member.display_avatar
