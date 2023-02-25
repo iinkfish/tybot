@@ -1,8 +1,0 @@
-{
-    "botMeta": {
-        "TOKEN": "PUT YOUR KEY HERE",
-        "botName": "YOUR BOT NAME HERE",
-        "loggingLevel": "info",
-        "botDataPath": "ABSOLUTE PATH TO YOUR BOTDATA"
-    }
-}
