@@ -9,3 +9,5 @@ src/__pycache__/funcs.cpython-311.pyc
 src/__pycache__/twitch.cpython-311.pyc
 src/.env
 .env
+
+src/cogs/__pycache__/
