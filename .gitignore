@@ -11,3 +11,5 @@ src/.env
 .env
 
 src/cogs/__pycache__/
+
+*.pyc

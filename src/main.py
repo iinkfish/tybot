@@ -36,7 +36,7 @@ async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
     await ctx.respond(f"The sum of {first} and {second} is {sum}.")
 
 
-@bot.slash_command(description="multiplies two numbers", guild_ids=["1044668454646587453"])
+@bot.slash_command(description="multiplies two numbers")
 # pycord will figure out the types for you
 async def multiply(ctx, first: discord.Option(int), second: discord.Option(int)):
     # you can use them as they were actual integers
@@ -44,7 +44,7 @@ async def multiply(ctx, first: discord.Option(int), second: discord.Option(int))
     await ctx.respond(f"The sum of {first} and {second} is {sum}.")
 
 
-@bot.slash_command(guild_ids=["1044668454646587453", "941802797702209546"])
+@bot.slash_command(guild_ids=["1044668454646587453"])
 async def getid(ctx, member: discord.Member):
     await ctx.respond(f"Author ID: {ctx.author.id}\n MemberID: {member.id}")
 
