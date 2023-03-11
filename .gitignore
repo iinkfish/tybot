@@ -7,3 +7,7 @@ src/__pycache__/classdefs.cpython-311.pyc
 app.log
 src/__pycache__/funcs.cpython-311.pyc
 src/__pycache__/twitch.cpython-311.pyc
+src/.env
+.env
+
+src/cogs/__pycache__/
