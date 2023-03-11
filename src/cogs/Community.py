@@ -10,11 +10,11 @@ class Community(commands.Cog):  # create a class for our cog that inherits from 
     def __init__(self, bot):  # this is a special method that is called when the cog is loaded
         self.bot = bot
 
-    @discord.slash_command(guild_ids=["1044668454646587453"])  # we can also add application commands
+    @discord.slash_command(guild_ids=["1044668454646587453", "941802797702209546"])  # we can also add application commands
     async def goodbye(self, ctx):
         await ctx.respond(f"Goodbye {ctx.author.mention} !")
 
-    @discord.slash_command(description="give another member a hug <3", guild_ids=["1044668454646587453"])
+    @discord.slash_command(description="give another member a hug <3", guild_ids=["1044668454646587453", "941802797702209546"])
     async def hug(self, ctx, member: discord.Member):
         await ctx.respond(f" {ctx.author} gives {member.mention} a fat hug <3.")
 
@@ -23,13 +23,13 @@ class Community(commands.Cog):  # create a class for our cog that inherits from 
         responses = ["All signs point to yes...", "Yes!", "My sources say nope.", "You may rely on it.", "Concentrate and ask again...", "Outlook not so good...", "It is decidedly so!", "Better not tell you.", "Very doubtful.", "Yes - Definitely!", "It is certain!", "Most likely.", "Ask again later.", "No!", "Outlook good.", "Don\"t count on it."]
         await ctx.respond(f"**Question: ** {question} \n**Answer: ** {random.choice(responses)}")
 
-    @discord.slash_command(description="Call another member cute :)", guild_ids=["1044668454646587453"])
+    @discord.slash_command(description="Call another member cute :)", guild_ids=["1044668454646587453", "941802797702209546"])
     async def cute(self, ctx, member: discord.Member):
         await ctx.respond(
             f"Can we please talk about what a cutiepie {member.mention} is? Can yall believe how cute they are?")
 
     @discord.slash_command(description="Get the chance of love between you and someone else",
-                           guild_ids=["1044668454646587453"])
+                           guild_ids=["1044668454646587453", "941802797702209546"])
     async def love(self, ctx, member: discord.Member):
         # sneaky way to always get 100 % love with someone you want :)
         isUser1 = (member.id == 714055601340284969) or (member.id == 679022772336328754)

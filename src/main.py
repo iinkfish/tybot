@@ -43,10 +43,20 @@ async def multiply(ctx, first: discord.Option(int), second: discord.Option(int))
     sum = first * second
     await ctx.respond(f"The sum of {first} and {second} is {sum}.")
 
-@bot.slash_command(guild_ids=["1044668454646587453"])
+
+@bot.slash_command(guild_ids=["1044668454646587453", "941802797702209546"])
 async def getid(ctx, member: discord.Member):
     await ctx.respond(f"Author ID: {ctx.author.id}\n MemberID: {member.id}")
 
 
-bot.load_extension('cogs.Community')
+cogs_list = [
+    'Community',
+    'GameAPI',
+    'Tools',
+    'ChatAI'
+]
+
+for cog in cogs_list:
+    bot.load_extension(f'cogs.{cog}')
+
 bot.run(os.getenv('TOKEN'))  # run the bot with the token

@@ -12,7 +12,7 @@ class GameAPI(commands.Cog):  # create a class for our cog that inherits from co
         self.bot = bot
 
     @discord.slash_command(description="Get current apex map for all modes",
-                           guild_ids=["1044668454646587453"])
+                           guild_ids=["1044668454646587453", "941802797702209546"])
     async def apexmaps(self, ctx):
         response = requests.get(
             f'https://api.mozambiquehe.re/maprotation?auth=b5aeb39166fc6db8a895bfd34942d6e3&version=1')
