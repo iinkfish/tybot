@@ -11,7 +11,7 @@ class ChatAI(commands.Cog):  # create a class for our cog that inherits from com
         self.bot = bot
 
     @discord.slash_command(description="Ask tyBot anything you wish",
-                           guild_ids=["1044668454646587453", "941802797702209546"])
+                           guild_ids=["1044668454646587453", "941802797702209546", "854690534613057556", "695707921916362814"])
     async def answer(self, ctx, prompt: discord.Option(str)):
         await ctx.defer()
         openai.api_key = os.getenv('OPENAI_API_KEY')

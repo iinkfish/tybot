@@ -12,8 +12,7 @@ class Tools(commands.Cog):  # create a class for our cog that inherits from comm
     def __init__(self, bot):  # this is a special method that is called when the cog is loaded
         self.bot = bot
 
-    @discord.slash_command(description="Convert any length",
-                           guild_ids=["1044668454646587453", "941802797702209546"])
+    @discord.slash_command(description="Convert any length")
     async def convertunits(self, ctx, value: discord.Option(float), unit: discord.Option(str)):
         unit_conversions = {
             'ft': {
