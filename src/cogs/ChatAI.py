@@ -26,6 +26,16 @@ class ChatAI(commands.Cog):  # create a class for our cog that inherits from com
 
         await ctx.followup.send(response.choices[0].text.replace('![alt text]', '[How about this?]'))
 
+    @discord.slash_command(description="Write a description of the image you want to create", guild_ids=["1044668454646587453"])
+    async def create(self, ctx, prompt: discord.Option(str)):
+        await ctx.defer()
+        openai.api_key = os.getenv('OPENAI_API_KEY')
+        response = openai.Image.create(
+            prompt=prompt,
+            n=1,
+            size="1024x1024"
+        )
+        await ctx.followup.send(response['data'][0]['url'])
 
 def setup(bot):  # this is called by Pycord to set up the cog
     bot.add_cog(ChatAI(bot))  # add the cog to the bot
